@@ -1,0 +1,74 @@
+<html>
+<head></head>
+<body>
+<h3>Calculator</h3>
+<br/>
+
+<form Name="calc">
+    <table id="calc" border=2>
+        <tr>
+            <td colspan=5><input id=numberOne name="display" type="text"></td>
+            <td colspan=5><input id=numberTwo name="display" type="text"></td>
+        </tr>
+        <tr>
+            <td colspan=5>
+                <button onclick="getValues('add')">Add</button>
+            </td>
+            <td colspan=5>
+                <button onclick="getValues('subtract')">subtract</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=5><input id=addResult name="display" type="text" readonly></td>
+            <td colspan=5><input id=subtractResult name="display" type="text" readonly></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script type="text/javascript">
+
+    function getValues(operation) {
+
+        event.preventDefault();
+
+        var numberOne = parseInt(document.getElementById("numberOne").value);
+        var numberTwo = parseInt(document.getElementById("numberTwo").value);
+
+//        var flag = checkIsNumeric(numberOne);
+        checkIsNumeric(numberOne);
+
+        /*if (!flag) {
+            return;
+        }
+        flag = checkIsNumeric(numberTwo);
+        if (!flag) {
+            return;
+        }*/
+        if (operation === 'add') {
+            addNumbers(numberOne, numberTwo)
+        } else {
+            subtractNumbers(numberOne, numberTwo)
+        }
+    }
+
+    function checkIsNumeric(numberOne) {
+
+        if (isNaN(numberOne)) {
+            alert('please enter numeric value');
+            return;
+        }else{
+            return true;
+        }
+    }
+
+    function addNumbers(numberOne, numberTwo) {
+        var addResult = numberOne + numberTwo;
+        document.getElementById('addResult').value = addResult;
+    }
+
+    function subtractNumbers(numberOne, numberTwo) {
+        var subtractResult = numberOne - numberTwo;
+        document.getElementById('subtractResult').value = subtractResult;
+    }
+</script>
