@@ -1,6 +1,7 @@
 /**
  * question
- * Write a JavaScript code that will prompt user to enter a list of comma separated integers and returns the total occurrences of each number in an order(ascending/descending).
+ * Write a JavaScript code that will prompt user to enter a list of comma separated integers and returns
+ * the total occurrences of each number in an order(ascending/descending).
  INPUT:     5,4,2,8,2,1,4,5,8,5,2,8,8,8
  OUTPUT:    1: 1
  2: 3
@@ -28,5 +29,20 @@ function findOccurance(input) {
 
     }
 
+    console.log(output);
+}
+
+
+//solution 2
+
+var input = [5, 4, 2, 8, 2, 1, 4, 5, 8, 5, 2, 8, 8, 8];
+findOccurance(input);
+function findOccurance(input) {
+    input.sort();
+    var output = {};
+
+    input.forEach(function (item, index) {
+        output[input[index]] = output[input[index]] ? ( output[input[index]] + 1 ) : 1
+    });
     console.log(output);
 }
