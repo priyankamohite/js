@@ -12,10 +12,10 @@
         </tr>
         <tr>
             <td colspan=5>
-                <button onclick="getValues('add')">Add</button>
+                <button onclick="main('add')">Add</button>
             </td>
             <td colspan=5>
-                <button onclick="getValues('subtract')">subtract</button>
+                <button onclick="main('subtract')">subtract</button>
             </td>
         </tr>
         <tr>
@@ -28,23 +28,18 @@
 </html>
 <script type="text/javascript">
 
-    function getValues(operation) {
-
+    function main(operation) {
         event.preventDefault();
 
         var numberOne = parseInt(document.getElementById("numberOne").value);
         var numberTwo = parseInt(document.getElementById("numberTwo").value);
 
-//        var flag = checkIsNumeric(numberOne);
-        checkIsNumeric(numberOne);
-
-        /*if (!flag) {
+        var flag = validateNumbers(numberOne, numberTwo);
+        if (!flag) {
+            alert('please enter numeric value');
             return;
         }
-        flag = checkIsNumeric(numberTwo);
-        if (!flag) {
-            return;
-        }*/
+
         if (operation === 'add') {
             addNumbers(numberOne, numberTwo)
         } else {
@@ -52,12 +47,10 @@
         }
     }
 
-    function checkIsNumeric(numberOne) {
-
-        if (isNaN(numberOne)) {
-            alert('please enter numeric value');
-            return;
-        }else{
+    function validateNumbers(numberOne, numberTwo) {
+        if (isNaN(numberOne) || isNaN(numberTwo)) {
+            return false;
+        } else {
             return true;
         }
     }
