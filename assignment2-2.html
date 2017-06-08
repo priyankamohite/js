@@ -1,0 +1,73 @@
+<!--Create a simple JavaScript Calculator application with two input fields and two buttons (addition and subtraction).
+User will input the two numbers and click any of the button, it should display answer in the document below that.
+Handle all the cases of incorrect input parameters.INPUT 1: 6    INPUT 2: 5Click => ADDITIONThe sum is 11 INPUT 1: 6
+INPUT 2: 5Click => SUBTRACTIONThe difference is 1-->
+
+
+<html>
+<head></head>
+<body>
+<h3>Calculator</h3>
+<br/>
+
+<form Name="calc">
+    <table id="calc" border=2>
+        <tr>
+            <td colspan=5><input id=numberOne name="display" type="text"></td>
+            <td colspan=5><input id=numberTwo name="display" type="text"></td>
+        </tr>
+        <tr>
+            <td colspan=5>
+                <button onclick="main('add')">Add</button>
+            </td>
+            <td colspan=5>
+                <button onclick="main('subtract')">subtract</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=5><input id=addResult name="display" type="text" readonly></td>
+            <td colspan=5><input id=subtractResult name="display" type="text" readonly></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script type="text/javascript">
+
+    function main(operation) {
+        event.preventDefault();
+
+        var numberOne = parseInt(document.getElementById("numberOne").value);
+        var numberTwo = parseInt(document.getElementById("numberTwo").value);
+
+        var flag = validateNumbers(numberOne, numberTwo);
+        if (!flag) {
+            alert('please enter numeric value');
+            return;
+        }
+
+        if (operation === 'add') {
+            addNumbers(numberOne, numberTwo)
+        } else {
+            subtractNumbers(numberOne, numberTwo)
+        }
+    }
+
+    function validateNumbers(numberOne, numberTwo) {
+        if (isNaN(numberOne) || isNaN(numberTwo)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function addNumbers(numberOne, numberTwo) {
+        var addResult = numberOne + numberTwo;
+        document.getElementById('addResult').value = addResult;
+    }
+
+    function subtractNumbers(numberOne, numberTwo) {
+        var subtractResult = numberOne - numberTwo;
+        document.getElementById('subtractResult').value = subtractResult;
+    }
+</script>
