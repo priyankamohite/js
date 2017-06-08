@@ -65,9 +65,3 @@ console.log(localStore.get('php')); //null
 
 localStore.removeAll();
 localStore.count(); //0
-
-
-
-
-
-
